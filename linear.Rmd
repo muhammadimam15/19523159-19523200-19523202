@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+```{r}
+data(rock)
+head(rock)
+```
+```{r}
+data <- subset(rock,select= c(area,peri))
+data
+```
+```{r}
+fit <- lm(area~peri,data=rock)
+summary(fit)
+```
+```{r}
+library(predict3d)
+ggPredict(fit)
+```
+```{r}
+fit1 <- lm(area~peri+shape,data=rock)
+summary(fit1)
+ggPredict(fit1)
+```
+

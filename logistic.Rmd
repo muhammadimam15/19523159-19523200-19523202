@@ -1,0 +1,32 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+```{r}
+mtcars
+
+```
+```{r}
+dt <- subset(mtcars,select = c(disp, hp, vs))
+dt
+```
+```{r}
+fit <- glm(formula = vs~hp, data = mtcars, family = binomial)
+summary(fit)
+```
+```{r}
+library(ggplot2)
+ggplot(dt, aes(x = hp, y = vs)) + geom_point() + stat_smooth(method = "glm", method.args = list(family = binomial), se = FALSE)
+
+```
+```{r}
+fit2<- glm (formula = vs~hp+disp, data = mtcars, family = binomial)
+summary(fit2)
+```
+```{r}
+library(predict3d)
+ggPredict(fit2)
+```
+

@@ -1,0 +1,21 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+```{r}
+library(mlbench)
+data(PimaIndiansDiabetes)
+head(PimaIndiansDiabetes)
+
+```
+```{r}
+data <- subset(PimaIndiansDiabetes,data= c(pressure,triceps,insulin,pedigree,diabetes))
+```
+```{r}
+library(naivebayes)
+data1=naive_bayes(diabetes ~., data = data ) 
+data1
+```
+
